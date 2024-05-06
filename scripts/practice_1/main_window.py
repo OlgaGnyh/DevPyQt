@@ -1,5 +1,6 @@
 from PySide6 import QtWidgets
 
+
 class MainWindow(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
