@@ -8,13 +8,31 @@
 (красивая - красным, кнопка - синим)
 """
 
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets, QtGui
 
 
 class Window(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+
+        self.initUi()
+
+    def initUi(self):
+        self.qlabel = QtWidgets.QLabel('<A style="color:red">Красивая</A> <B style="color:blue">кнопка</B>')
+
+        layout = QtWidgets.QVBoxLayout()
+        layout.addWidget(self.qlabel)
+
+        self.setLayout(layout)
+
+    def mousePressEvent(self, event: QtGui.QMouseEvent) -> None:
+
+        self.qlabel.setText("mousePressEvent")
+
+    def mouseReleaseEvent(self, event: QtGui.QMouseEvent) -> None:
+
+        self.qlabel.setText("mouseReleaseEvent")
 
 
 if __name__ == "__main__":

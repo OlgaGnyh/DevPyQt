@@ -8,13 +8,19 @@
 При выводе события указывать время, когда произошло событие.
 """
 
-from PySide6 import QtWidgets
+import datetime
+from PySide6 import QtWidgets, QtCore
 
 
 class Window(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+
+    def event(self, event: QtCore.QEvent):
+        print(datetime.datetime.now())
+        print(event)
+        return super().event(event)
 
 
 if __name__ == "__main__":
