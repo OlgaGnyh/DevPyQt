@@ -21,7 +21,7 @@
 """
 
 
-from PySide6 import QtWidgets, QtCore
+from PySide6 import QtWidgets, QtCore, QtGui
 import datetime
 from scripts.practice_2.ui.c_signals_events_form import Ui_Form
 
@@ -31,6 +31,19 @@ class Window(QtWidgets.QWidget):
         super().__init__(parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+        print(QtWidgets.QApplication.screens())
+        print(QtWidgets.QApplication.primaryScreen())
+        self.move(0, 0)
+        print(self.width(), self.height())
+        print(self.x(), self.y())
+        print(QtWidgets.QApplication.primaryScreen().size())
+        print(self.windowState())
+
+
+    def resizeEvent(self, event: QtGui.QResizeEvent) -> None:
+        print(self.x(), self.y())
+        print(self.size())
+
 
 
 
