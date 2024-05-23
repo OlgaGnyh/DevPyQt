@@ -1,6 +1,6 @@
-from PySide2.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton
-from PySide2.QtGui import QPainter, QColor, QFont, QPen, QIcon
-from PySide2.QtCore import Qt, QRect
+from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton
+from PySide6.QtGui import QPainter, QColor, QFont, QPen, QIcon
+from PySide6.QtCore import Qt, QRect
 import sys
 import os
 import copy
