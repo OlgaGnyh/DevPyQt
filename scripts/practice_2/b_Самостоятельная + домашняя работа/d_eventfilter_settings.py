@@ -18,15 +18,41 @@
    в него соответствующие значения
 """
 
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets, QtGui, QtCore
 from scripts.practice_2.ui.d_eventfilter_settings_form import Ui_Form
 
 class Window(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.settings = QtCore.QSettings("value")
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+
+        value = self.settings.value('value', [])
+        self.ui.lcdNumber.display(int(value))
+        self.ui.dial.setValue(int(value))
+        self.ui.horizontalSlider.setValue(int(value))
+
+        self.ui.dial.valueChanged.connect(lambda: self.ui.lcdNumber.display(self.ui.dial.value()))
+        self.ui.dial.valueChanged.connect(lambda: self.ui.horizontalSlider.setValue(self.ui.dial.value()))
+        self.ui.horizontalSlider.valueChanged.connect(lambda: self.ui.lcdNumber.display(self.ui.horizontalSlider.value()))
+        self.ui.horizontalSlider.valueChanged.connect(lambda: self.ui.dial.setValue(self.ui.horizontalSlider.value()))
+
+        self.ui.comboBox.addItem('oct')
+        self.ui.comboBox.addItem('hex')
+        self.ui.comboBox.addItem('bin')
+        self.ui.comboBox.addItem('dec')
+
+    def keyPressEvent(self, event: QtGui.QKeyEvent) -> None:
+        if event.text() == '+':
+            self.ui.dial.setValue(int(self.ui.dial.value()) + 1)
+        if event.text() == '-':
+            self.ui.dial.setValue(int(self.ui.dial.value()) - 1)
+        print(self.ui.dial.value())
+
+    def closeEvent(self, event: QtGui.QCloseEvent) -> None:
+        self.settings.setValue('value', self.ui.lcdNumber.value())
 
 
 if __name__ == "__main__":

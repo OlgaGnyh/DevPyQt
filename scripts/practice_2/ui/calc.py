@@ -82,38 +82,38 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.pushButton_9, 2, 2, 1, 1)
 
-        self.pushButton_0 = QPushButton(Form)
-        self.pushButton_0.setObjectName(u"pushButton_0")
-
-        self.gridLayout.addWidget(self.pushButton_0, 3, 1, 1, 1)
-
-        self.pushButton_plus = QPushButton(Form)
-        self.pushButton_plus.setObjectName(u"pushButton_plus")
-
-        self.gridLayout.addWidget(self.pushButton_plus, 4, 0, 1, 1)
-
-        self.pushButton_minus = QPushButton(Form)
-        self.pushButton_minus.setObjectName(u"pushButton_minus")
-
-        self.gridLayout.addWidget(self.pushButton_minus, 4, 1, 1, 1)
-
-        self.pushButton_umnogenie = QPushButton(Form)
-        self.pushButton_umnogenie.setObjectName(u"pushButton_umnogenie")
-
-        self.gridLayout.addWidget(self.pushButton_umnogenie, 4, 2, 1, 1)
-
         self.pushButton_delenie = QPushButton(Form)
         self.pushButton_delenie.setObjectName(u"pushButton_delenie")
 
         self.gridLayout.addWidget(self.pushButton_delenie, 4, 3, 1, 1)
 
+        self.pushButton_plus = QPushButton(Form)
+        self.pushButton_plus.setObjectName(u"pushButton_plus")
 
-        self.verticalLayout.addLayout(self.gridLayout)
+        self.gridLayout.addWidget(self.pushButton_plus, 1, 3, 1, 1)
+
+        self.pushButton_minus = QPushButton(Form)
+        self.pushButton_minus.setObjectName(u"pushButton_minus")
+
+        self.gridLayout.addWidget(self.pushButton_minus, 2, 3, 1, 1)
+
+        self.pushButton_umnogenie = QPushButton(Form)
+        self.pushButton_umnogenie.setObjectName(u"pushButton_umnogenie")
+
+        self.gridLayout.addWidget(self.pushButton_umnogenie, 3, 3, 1, 1)
+
+        self.pushButton_0 = QPushButton(Form)
+        self.pushButton_0.setObjectName(u"pushButton_0")
+
+        self.gridLayout.addWidget(self.pushButton_0, 3, 1, 1, 1)
 
         self.pushButton_result = QPushButton(Form)
         self.pushButton_result.setObjectName(u"pushButton_result")
 
-        self.verticalLayout.addWidget(self.pushButton_result)
+        self.gridLayout.addWidget(self.pushButton_result, 4, 0, 1, 3)
+
+
+        self.verticalLayout.addLayout(self.gridLayout)
 
 
         self.retranslateUi(Form)
@@ -133,11 +133,11 @@ class Ui_Form(object):
         self.pushButton_7.setText(QCoreApplication.translate("Form", u"7", None))
         self.pushButton_8.setText(QCoreApplication.translate("Form", u"8", None))
         self.pushButton_9.setText(QCoreApplication.translate("Form", u"9", None))
-        self.pushButton_0.setText(QCoreApplication.translate("Form", u"0", None))
+        self.pushButton_delenie.setText(QCoreApplication.translate("Form", u"/", None))
         self.pushButton_plus.setText(QCoreApplication.translate("Form", u"+", None))
         self.pushButton_minus.setText(QCoreApplication.translate("Form", u"-", None))
         self.pushButton_umnogenie.setText(QCoreApplication.translate("Form", u"*", None))
-        self.pushButton_delenie.setText(QCoreApplication.translate("Form", u"/", None))
+        self.pushButton_0.setText(QCoreApplication.translate("Form", u"0", None))
         self.pushButton_result.setText(QCoreApplication.translate("Form", u"=", None))
     # retranslateUi
 

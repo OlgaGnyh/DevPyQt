@@ -156,9 +156,6 @@ class WeatherHandler(QtCore.QThread):
             time.sleep(self.__delay)
 
 
-
-
-
 if __name__ == "__main__":
     app = QtWidgets.QApplication()
 
