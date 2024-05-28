@@ -33,16 +33,12 @@ class Window(QtWidgets.QWidget):
         self.ui.lcdNumber.display(int(value))
         self.ui.dial.setValue(int(value))
         self.ui.horizontalSlider.setValue(int(value))
+        self.ui.comboBox.setCurrentText(self.settings.value('value2', []))
 
         self.ui.dial.valueChanged.connect(lambda: self.ui.lcdNumber.display(self.ui.dial.value()))
         self.ui.dial.valueChanged.connect(lambda: self.ui.horizontalSlider.setValue(self.ui.dial.value()))
         self.ui.horizontalSlider.valueChanged.connect(lambda: self.ui.lcdNumber.display(self.ui.horizontalSlider.value()))
         self.ui.horizontalSlider.valueChanged.connect(lambda: self.ui.dial.setValue(self.ui.horizontalSlider.value()))
-
-        self.ui.comboBox.addItem('oct')
-        self.ui.comboBox.addItem('hex')
-        self.ui.comboBox.addItem('bin')
-        self.ui.comboBox.addItem('dec')
 
     def keyPressEvent(self, event: QtGui.QKeyEvent) -> None:
         if event.text() == '+':
@@ -53,6 +49,7 @@ class Window(QtWidgets.QWidget):
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
         self.settings.setValue('value', self.ui.lcdNumber.value())
+        self.settings.setValue('value2', self.ui.comboBox.currentText())
 
 
 if __name__ == "__main__":
