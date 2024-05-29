@@ -28,17 +28,29 @@ class Window(QtWidgets.QWidget):
         self.settings = QtCore.QSettings("value")
         self.ui = Ui_Form()
         self.ui.setupUi(self)
+        self.comboxtextchabge()
 
-        value = self.settings.value('value', [])
+        value = self.settings.value('value', 0)
         self.ui.lcdNumber.display(int(value))
         self.ui.dial.setValue(int(value))
         self.ui.horizontalSlider.setValue(int(value))
-        self.ui.comboBox.setCurrentText(self.settings.value('value2', []))
+        self.ui.comboBox.setCurrentText(self.settings.value('value2', ''))
 
         self.ui.dial.valueChanged.connect(lambda: self.ui.lcdNumber.display(self.ui.dial.value()))
         self.ui.dial.valueChanged.connect(lambda: self.ui.horizontalSlider.setValue(self.ui.dial.value()))
         self.ui.horizontalSlider.valueChanged.connect(lambda: self.ui.lcdNumber.display(self.ui.horizontalSlider.value()))
         self.ui.horizontalSlider.valueChanged.connect(lambda: self.ui.dial.setValue(self.ui.horizontalSlider.value()))
+        self.ui.comboBox.currentTextChanged.connect(lambda: self.comboxtextchabge())
+
+    def comboxtextchabge(self):
+        if self.ui.comboBox.currentText() == 'dec':
+            self.ui.lcdNumber.setDecMode()
+        elif self.ui.comboBox.currentText() == 'bin':
+            self.ui.lcdNumber.setBinMode()
+        elif self.ui.comboBox.currentText() == 'hex':
+            self.ui.lcdNumber.setHexMode()
+        elif self.ui.comboBox.currentText() == 'oct':
+            self.ui.lcdNumber.setOctMode()
 
     def keyPressEvent(self, event: QtGui.QKeyEvent) -> None:
         if event.text() == '+':

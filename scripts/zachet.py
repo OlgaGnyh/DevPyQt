@@ -1,6 +1,5 @@
 from PySide6 import QtWidgets
 from PySide6.QtSql import QSqlDatabase, QSqlQuery
-from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QTableWidget, QTableWidgetItem, QHeaderView, QDialog, QFormLayout, QMessageBox
 import datetime
 
@@ -126,6 +125,7 @@ class Window(QtWidgets.QWidget):
 
     def initUi(self) -> None:
         layout = QtWidgets.QVBoxLayout()
+        layoutH = QtWidgets.QHBoxLayout()
         self.label_notes = QtWidgets.QLabel('Заметки')
         self.update_data_button = QtWidgets.QPushButton('Обновить данные')
         self.update_data_button.clicked.connect(lambda: self.show_notes())
@@ -150,12 +150,16 @@ class Window(QtWidgets.QWidget):
         self.update_note_button = QtWidgets.QPushButton('Изменить')
         self.update_note_button.clicked.connect(lambda: self.update_note(self.chose_row()))
 
+
+        layoutH.addWidget(self.update_data_button)
+        layoutH.addWidget(self.add_note_button)
+        layoutH.addWidget(self.delete_note_button)
+        layoutH.addWidget(self.update_note_button)
+
         layout.addWidget(self.label_notes)
-        layout.addWidget(self.update_data_button)
         layout.addWidget(self.table_notes)
-        layout.addWidget(self.add_note_button)
-        layout.addWidget(self.delete_note_button)
-        layout.addWidget(self.update_note_button)
+        layout.addLayout(layoutH)
+
         self.setLayout(layout)
 
     def show_notes(self):
